@@ -1,0 +1,125 @@
+\subsection{\label{subsec:constant coefficients}Constant coefficients}
+
+Begin by treating the parameters $\alpha$ and $j$ as constants. This may seem unrelated to our problem, but when we study trajectories we will consider travel along isoclines where one of these parameters is constant.
+
+%
+\begin{landscape}
+%
+\begin{table}[htdp]
+\caption[RTE with constant coefficients, cases I, II]{RTE with constant coefficients, cases I, II. An endpoint is set to unity.}
+\begin{center}
+\begin{tabular}{cc}
+%
+$I(s) = \frac{1}{\alpha}\paren{j+(\alpha-j)e^{\alpha(1-s)}}$ & $I(s) = \frac{1}{\alpha}\paren{j+(\alpha-j)e^{\alpha s}}$ \\[4pt]
+%
+$I(1) = 1$ & $I(0) = 1$ \\
+%
+\includegraphics[ width = 3.5in ]{graphics/rte/"constants 01 a"} &
+\includegraphics[ width = 3.5in ]{graphics/rte/"constants 02 a"} \\[-12pt]
+%
+$\alpha = 2, 4, 6, 8, 10$& $j = 0, 2, 4, 6, 8, 10$\\
+%
+\includegraphics[ width = 3.5in ]{graphics/rte/"constants 01 j"} &
+\includegraphics[ width = 3.5in ]{graphics/rte/"constants 02 j"} \\[-12pt]
+%
+$\alpha = 2, 4, 6, 8, 10$ & $j = 0, 2, 4, 6, 8, 10$\\
+%
+\end{tabular}
+\end{center}
+\label{tab:ode:constant:1}
+\end{table}
+%
+%
+\begin{table}[htdp]
+\caption[RTE with constant coefficients, cases III, IV]{RTE with constant coefficients, cases III, IV. An endpoint is set to zero.}
+\begin{center}
+\begin{tabular}{cc}
+%
+$I(s) = \frac{j}{\alpha}\paren{1-e^{\alpha(1-s)}}$ & $I(s) = \frac{j}{\alpha}\paren{1-e^{\alpha s}}$ \\[4pt]
+%
+$I(1) = 0$ & $I(0) = 0$ \\
+%
+\includegraphics[ width = 3.5in ]{graphics/rte/"constants 03 a"} &
+\includegraphics[ width = 3.5in ]{graphics/rte/"constants 04 a"} \\[-12pt]
+%
+$\alpha = 2, 4, 6, 8, 10$& $j = 0, 2, 4, 6, 8, 10$\\
+%
+\includegraphics[ width = 3.5in ]{graphics/rte/"constants 03 j"} &
+\includegraphics[ width = 3.5in ]{graphics/rte/"constants 04 j"} \\[-12pt]
+%
+$\alpha = 2, 4, 6, 8, 10$ & $j = 0, 2, 4, 6, 8, 10$\\
+%
+\end{tabular}
+\end{center}
+\label{tab:ode:constant:2}
+\end{table}
+%%%%
+\begin{table}[htdp]
+\caption[RTE with constant coefficients, cases V, VI]{RTE with constant coefficients, cases V, VI. An endpoint derivative is set to zero.}
+\begin{center}
+\begin{tabular}{cc}
+%
+$I(s) = \frac{j}{\alpha}\paren{j-e^{\alpha(1-s)}}$ & $I(s) = \frac{j}{\alpha}\paren{j-e^{\alpha s}}$ \\[4pt]
+%
+$I'(1) = 1$ & $I'(1) = 1$ \\
+%
+\includegraphics[ width = 3.5in ]{graphics/rte/"constants 05 a"} &
+\includegraphics[ width = 3.5in ]{graphics/rte/"constants 06 a"} \\[-12pt]
+%
+$\alpha = 2, 4, 6, 8, 10$& $j = 0, 2, 4, 6, 8, 10$\\
+%
+\includegraphics[ width = 3.5in ]{graphics/rte/"constants 05 j"} &
+\includegraphics[ width = 3.5in ]{graphics/rte/"constants 06 j"} \\[-12pt]
+%
+$\alpha = 2, 4, 6, 8, 10$ & $j = 0, 2, 4, 6, 8, 10$\\
+%
+\end{tabular}
+\end{center}
+\label{tab:ode:constant:3}
+\end{table}
+%%%%
+\begin{table}[htdp]
+\caption[RTE with constant coefficients, cases VII, VIII]{RTE with constant coefficients, cases VII, VIII. An endpoint derivative is set to zero.}
+\begin{center}
+\begin{tabular}{cc}
+%
+$I(s) = \frac{j}{\alpha}$ & $I(s) = \frac{j}{\alpha}$ \\[4pt]
+%
+$I'(1) = 0$ & $I'(1) = 0$ \\
+%
+\includegraphics[ width = 3.5in ]{graphics/rte/"constants 07 a"} &
+\includegraphics[ width = 3.5in ]{graphics/rte/"constants 07 a"} \\[-12pt]
+%
+$\alpha = 2, 4, 6, 8, 10$& $j = 0, 2, 4, 6, 8, 10$\\
+%
+\includegraphics[ width = 3.5in ]{graphics/rte/"constants 07 j"} &
+\includegraphics[ width = 3.5in ]{graphics/rte/"constants 07 j"} \\[-12pt]
+%
+$\alpha = 2, 4, 6, 8, 10$ & $j = 0, 2, 4, 6, 8, 10$\\
+%
+\end{tabular}
+\end{center}
+\label{tab:ode:constant:4}
+\end{table}
+%
+\end{landscape}
+%
+
+\begin{equation}
+  \td{I(s)}{s} = -\alpha I(s)
+\end{equation}
+which we may integrate directly to produce
+\begin{equation*}
+  \fln{I(s)} = -\alpha \intbounds{ s }{ s_{0} }
+\end{equation*}
+or
+\begin{equation}
+  I(s) = I(0) e^{-\alpha s}
+\end{equation}
+for problems where the intensity at the origin is known.
+
+% <<<<<
+%\input{chapters/"ch XXX"/"subsec "}
+% <<<<<
+
+\endinput %-------------------------------

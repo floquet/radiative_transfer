@@ -1,0 +1,126 @@
+% Use the following specification for BOTTOM page numbering:
+\documentclass[botnum, fleqn]{unmeethesis}
+\usepackage{amsmath,amssymb}
+\usepackage{graphicx}
+\usepackage{verbatim}
+\usepackage{lscape}
+\usepackage{listings}
+\usepackage[final]{pdfpages}
+\includepdfset{pagecommand=\thispagestyle{plain}}
+
+%\thesisdraft
+
+\newcommand{\pathname}   {common/}
+\newcommand{\fullpath}   {\pathname}
+\newcommand{\mmpath}     {/Dropbox/" io"/UNM/dissertation/figures/"area sequence"/graphics/}
+\newcommand{\bandpath}   {/Dropbox/" io"/dissertation/ode/geometry/graphics/}
+\newcommand{\profilepath}{/Dropbox/" io"/dissertation/HELIOS/trajectory/graphics/}
+%\newcommand{\tildepath}  {../../../../}
+\newcommand{\dropboxpathpath}  {../../}
+\newcommand{\tildepath}  {../../../}
+\input{\pathname declarations.tex}
+
+\begin{document}
+\lstset{language=Fortran}
+\frontmatter
+
+% \setlength{\parskip}{0.30cm}
+
+%%%     %%%%     %%%%     %%%%     %%%%     %%%%     %%%%     %%%%     %%%%     %%%%     %%%%
+
+\title{Radiative Transfer in \\[20pt]Inertial Confinement Fusion}
+
+\author{Daniel Topa}
+
+\degreesubject{Ph.D, Applied Mathematics}
+
+\degree{Doctor of Science \\Applied Mathematics}
+
+\documenttype{Dissertation}
+
+\previousdegrees{B.A., Physics, University of Akron, 1982 \\
+                 M.S., Applied Mathematics, University of New Mexico, 2011}
+
+\date{December, \thisyear}
+
+\maketitle
+
+\makecopyright
+
+\begin{dedication}
+   A nuestros tesoros Danny y Ximenita. \\[3ex]
+   ``A bird in hand is worth two in the bush''
+         -- Anonymous
+\end{dedication}
+
+\begin{acknowledgments}
+   \vspace{1.1in}
+   acknowledgments here.\footnote{Footnote.}
+\end{acknowledgments}
+
+\maketitleabstract %(required even though there's no abstract title anymore)
+
+\begin{abstract}
+   The rubric of radiative transfer covers a fascinating range physical processes including astrophysics, planetary sciences, and climate modeling. As such, purview of this research is restricted to a pressing experimental problem: inertial confinement physics, in particular the thermonuclear burn of a deuterium-tritium plasma at the National Ignition Facility at Lawrence Livermore National Laboratory. Even so, the problem demands a tightened focus on magnetohydrodynamic instabilities in the imploding plasma. Here we focus on the Rayleigh-Taylor instability caused by the impulsive driving of the outer core of capsule. The goal is to understand how radiation transported from the outer edge of the capsule signals the thermodynamic behavior of the mixing materials.
+   
+\clearpage %(required for 1-page abstract)
+\end{abstract}
+
+\tableofcontents
+\listoffigures
+\listoftables
+
+% <<<<
+\input{frontmatter/acronyms}
+\input{frontmatter/glossary}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\mainmatter
+
+%  %  %   %  %  %   %  %  %   %  %  %   Chapters   %  %  %   %  %  %   %  %  %   %  %  %
+\input{chapters/"ch 01"/head_introduction}
+\input{chapters/"ch rte"/"head rte"}
+\input{chapters/"ch measurement"/"head measurement"}
+%\input{chapters/introduction/head_introduction}
+%\include{chapters/"problem statement"/"head problem statement"}
+%\input{chapters/"radiation transport equation"/head_radiation_transport_equation}
+%\input{chapters/HELIOS/"head HELIOS"}
+%\input{chapters/ensembles/"head ensembles"}
+%\input{chapters/"ch trajectories"/"head trajectories"}
+%\input{chapters/fragments/"head fragments"}
+
+\chapter{Future Work}
+   I'm sure my future work will consist of lots of other famous stuff.
+
+%  %  %   %  %  %   %  %  %   %  %  %   Appendices   %  %  %   %  %  %   %  %  %   %  %  %
+\chapter*{Appendices}
+
+\addcontentsline{toc}{chapter}{Appendices}
+ % Next lines duplicated from .toc file and used to create mini
+ % "Appendix Table of Contents," if desired:
+   \contentsline {chapter}{\numberline {A}Bohr atom}{25}
+   \contentsline {chapter}{\numberline {B}Titanium}{26}
+   \contentsline {chapter}{\numberline {C}Approximation by polynomials}{27}
+   \contentsline {chapter}{\numberline {D}Disk polynomials}{27}
+   \contentsline {chapter}{\numberline {E}Surface fits}{27}
+   \contentsline {chapter}{\numberline {F}Fortran codes}{27}
+   \contentsline {chapter}{\numberline {G}Mathematica code}{60}
+ % End mini table of contents
+
+\appendix
+%\include{appendices/scattering}
+\input{appendices/"app bohr atom"/"head bohr atom"}
+\input{appendices/"app titanium"/"head titanium"}
+\input{appendices/"app approximation by polynomials"/"head approximation by polynomials"}
+\input{appendices/"app disk polynomials"/"head disk polynomials"}
+\input{appendices/"app surface fits"/"head surface fits"}
+%\input{appendices/"app fortran"/"head fortran"}
+%\input{appendices/"app Mathematica"/"head Mathematica"}
+
+\bibliographystyle{AMS}
+%\bibliography{bibliography/sample.bib}
+\bibliography{bibliography/dissertation.bib}
+
+
+\end{document}

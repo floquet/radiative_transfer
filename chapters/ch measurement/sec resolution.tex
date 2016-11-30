@@ -1,0 +1,69 @@
+\section{\label{sec:measurement:resolution}Resolution}
+
+We have established that the linear system used to solve for the scalar field $\psi(r)$ inside the capsule has a unique solution and we have quantified the conditioning and the asymptotic behavior. Now we turn our attention to measurements made by instruments within our technological scope.
+
+As such the question is how well can we resolve the spatial structure of the function $\psi$ with, say, 25 zones?
+
+Begin with the simple intuition of an example. Figure \eqref{fig:scalar profile} shows a sample profile for $\psi(r)$. The profile has enough structure to be of interest. The number of crests and troughs is easily discernible and there is a very abrupt change in the function near the boundary $r = 1$. This profile is rendered in circular cross sections at different resolutions in table \eqref{tab:measurement:zones}.
+
+\begin{figure}[htbp] %  figure placement: here, top, bottom, or page
+   \centering
+   \includegraphics[ width = 4in ]{graphics/measurement/"radial profile"} 
+   \caption[Input profile for a scalar field in the capsule]{Input profile for a scalar field in the capsule}
+   \label{fig:scalar profile}
+\end{figure}
+%
+%
+\begin{table}[htdp]
+\caption[Simulation of detector measurements at increasing resolution]{Simulation of detector measurements at increasing resolution. See figure \eqref{fig:scalar profile} for the input profile. The blue ring is the unit circle; note the sharp climb to unity at the edge of the unit disk.}
+%
+\begin{center}
+\begin{tabular}{ccc}
+%%
+ \includegraphics[ width = 1.5in ]{graphics/measurement/"Z 12 00002"} &
+ \includegraphics[ width = 1.5in ]{graphics/measurement/"Z 12 00003"} &
+ \includegraphics[ width = 1.5in ]{graphics/measurement/"Z 12 00004"} \\
+%
+ 2 zones & 3 zones & 4 zones \\\hline
+%%
+ \\
+ \includegraphics[ width = 1.5in ]{graphics/measurement/"Z 12 00005"} &
+ \includegraphics[ width = 1.5in ]{graphics/measurement/"Z 12 00010"} &
+ \includegraphics[ width = 1.5in ]{graphics/measurement/"Z 12 00025"} \\
+%
+ 5 zones & 10 zones & 25 zones \\\hline
+%%
+ \\
+ \includegraphics[ width = 1.5in ]{graphics/measurement/"Z 12 00050"} &
+ \includegraphics[ width = 1.5in ]{graphics/measurement/"Z 12 00100"} &
+ \includegraphics[ width = 1.5in ]{graphics/measurement/"Z 12 00250"} \\
+%
+ 50 zones & 100 zones & $\infty$ zones
+%%
+\end{tabular}
+\end{center}
+\label{tab:measurement:zones}
+\end{table}%
+%
+\begin{table}[htdp]
+\caption[Comparing the system matrix with the partitioned quarter disk]{Comparing the system matrix with the partitioned quarter disk for a detector with 25 limbs. The partitioned capsule shows the zones with the shading determined by the area of the zone.}
+\begin{center}
+\begin{tabular}{ccc}
+%
+capsule showing zones and sectors & $\mathbf{A}$, system matrix \\
+shaded by area & shaded by magnitude\\
+%
+\includegraphics[ width = 2.75in ]{graphics/measurement/"area shading 25"} &
+%
+\phantom{i}
+%
+\includegraphics[ width = 2.75in ]{graphics/measurement/"matrix shading 25"}
+%
+\end{tabular}
+\end{center}
+\label{tab:shading 25}
+\end{table}%
+
+%
+
+\endinput %-------------------------------

@@ -1,0 +1,40 @@
+\subsection{\label{sec:Radiation hydrodynamics}Rayleigh-Taylor instability}
+
+IVP for developing the mix width $h(t)$
+  % % % EQUATION
+  \begin{equation}
+    \tdt{h} = 2 \sqrt{\alpha A g h}
+  \end{equation}
+  % %
+$A$ is the Atwood number, $\alpha$ is a dimensionless growth parameter (not to be confused with the absorption), and $g$ is the acceleration due to gravity.
+Method: SOV
+  % % % EQUATION
+  \begin{equation}
+    \int \frac{dh}{\sqrt{h}} = 2 \sqrt{\alpha A g}\int dt
+  \end{equation}
+  % %
+The general solution is
+  % % % EQUATION
+  \begin{equation}
+    h(t) = \paren{\sqrt{\alpha A g}t + C}^{2}
+  \end{equation}
+  % %
+where $C$ is a constant of integration.
+
+To find a specific solution use the initial value condition $h(0) = h_{0}$ to recover
+  % % % EQUATION
+  \begin{equation}
+    h(t) = \paren{\sqrt{\alpha A g}t + \sqrt{h_{0}}}^{2}
+  \label{eq:mix width}
+  \end{equation}
+  % %
+  
+%  figure placement: here, top, bottom, or page
+\begin{figure}[htbp] 
+   \centering
+   \includegraphics[ width = 5in ]{graphics/theory/"mix width"} 
+   \caption[Parabolic growth of mix width]{The mix width grows quadratically with time. Sample solutions in \eqref{eq:mix width} for $h_{0} = 0, 1, 2$. On this scale $\alpha A g = 1$.}
+   \label{fig:example}
+\end{figure}
+
+\endinput %-------------------------------

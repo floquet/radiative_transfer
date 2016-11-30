@@ -1,0 +1,57 @@
+\chapter{\label{ch:rte}Radiative transport equation}
+
+The radiative transport equation describes how sentinel \xr s move through the plasma of the imploding DT gas to reach the detector. This is crucial for understanding how experimental signals are altered before they are measured.
+
+The mathematical theory of radiative transport is rich and mature; characterized with impeccable scholarship. Important tomes are listed here.
+\begin{itemize}
+\item 1934, Eberhard Hopf, \emph{Mathematical problems of radiative equilibrium.}\cite{hopf1934}
+\item 1952, Subrahmanyan Chandrasekhar, \emph{Radiative Transfer.}\cite{chandra1960}
+\item 1960, Ida Busbridge, \emph{The mathematics of radiative transfer.}\cite{Busbridge1960}
+\item 1963, Viktor Viktorovich Sobolev, \emph{A treatise on radiative transfer.}\cite{sobolev1963}
+\item 2002, Annamaneni Peraiah, \emph{An Introduction to Radiative Transfer: Methods and Applications in Astrophysics.}\cite{Peraiah2002}
+\end{itemize}
+The goal of this dissertation is to apply and extend the insights from their general treatment to the specific problem before us. 
+
+An equation so prominent in mathematical physics is certain to be expressed in different forms. Each form describes the same fundamental processes using different conventions.
+\begin{enumerate}
+\item $\alpha$: Absorption (or extinction) of photons
+\item $j$: Creation (or generation) of photon
+\item $\scat$: Scattering of photons into and out of the pencil.
+\end{enumerate}
+%%%
+Specific intensity\index{intensity!specific}
+%%%
+\begin{equation}
+  \td{I_{\nu}(s)}{s} + \alpha(s) I(s) = j(s) + \scat
+  \label{eq:rte}
+\end{equation}
+The differential scatter cross section is $\csd$.
+
+The actual measurement collects all the light along a line-of-sight. Effectively we are measuring $\mathcal{I}$, the \emph{integral} of the intensity\index{intensity!integrated} in equation \eqref{eq:rte}. 
+Measurement
+\begin{equation}
+  \mathcal{I_{\nu}} = \int_{\gamma} I_{\nu} ds
+  \label{eq:i:measured}
+\end{equation}
+The output quantity is the ratio of two spectral lines, typically the most intense.
+\begin{equation}
+  \boxed{
+  \Xi_{\nu_{1}\nu_{2}}(\gamma) = \frac{\int_{\gamma} I_{\nu_{1}}ds} {\int_{\gamma} I_{\nu_{2}}ds}
+  }
+  \label{eq:xi}
+\end{equation}
+
+\begin{figure}[htbp] %  figure placement: here, top, bottom, or page
+   \centering
+   \includegraphics[ width = 3in ]{graphics/rte/"capsule limbs"} 
+   \caption[The measured intensity is the integral along the line of sight]{The measured intensity is the integral along the line of sight. Two such limbs, $\gamma_{1}$ and $\gamma_{2}$, are shown here. The shading represents the value of some scalar field.}
+   \label{fig:limbs}
+\end{figure}
+
+% <<<<<
+\input{chapters/"ch rte"/"sec ode"}
+\input{chapters/"ch rte"/"sec pde"}
+\input{chapters/"ch rte"/"sec weak formulation"}
+% <<<<<
+
+\endinput %-------------------------------

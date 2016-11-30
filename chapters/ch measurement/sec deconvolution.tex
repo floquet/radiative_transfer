@@ -1,0 +1,317 @@
+\section{\label{sec:measurement:deconvolution}Deconvolution}
+
+While the experimental design is ingenious, it does not produce direct measurements of the thermodynamic state inside the capsule. Instead each detector records an integrated intensity value $\chi$ for each limb. We now address how to use these measurements to reveal information about the radial intensity distribution. With minor work we are able to extract an exact value of the scalar field averaged over a radial zone. A quick example shows problem and solution.
+
+%%%%%%%%%%%
+\subsection{Example with four detectors}
+The sample system has four detectors mapped to the upper half of a capsule. The capsule itself is represented by a unit disk with four radial zones as shown in figure \eqref{fig:limbs marked}. The basic quantities we have to work with are these:
+\begin{enumerate}
+\item scalar field values $\psi$,
+\item measured valued $\chi$,
+\item capsule area sampled $a$.
+\end{enumerate}
+%  figure placement: here, top, bottom, or page
+\begin{figure}[htbp] 
+   \centering
+   \includegraphics[ width = 3in ]{\tildepath\limbpath/marked}
+   \caption[A sample problem with four radial zones]{A sample problem with four radial zones.}
+   \label{fig:limbs marked}
+\end{figure}
+
+The input quantities are the detector measurements $\chi_{1},\dots,\chi_{4}$. The output quantities are the scalar field values $\psi_{1},\dots,\psi_{4}$. We need to calculate the area in each zone where a zone is determined by a limb partitioned into radial slices. Figure \eqref{fig:limbs etc} shows how the limbs are divided into zone with area $a_{jk}$, where $j=1,\dots,4$ and $k=1,\dots,j$. These areas are computed a priori.
+ %  figure placement: here, top, bottom, or page
+ \begin{figure}[htbp]
+   \centering
+%
+   \includegraphics[ width = 2.75in ]{\tildepath\limbpath/"areas shaded"} \qquad 
+%
+   \includegraphics[ width = 2.75in ]{\tildepath\limbpath/areas} 
+%
+   \caption[The area of each zone inside the four limbs]{The area of each zone inside the four limbs. By inspection we see the areas are ordered as $a_{r,c}>a_{r,c+1}$ and $a_{r,c}>a_{r+1,c}$.}
+   \label{fig:limbs etc}
+\end{figure}
+
+This leads to a lower triangular linear system of the form
+\begin{equation}
+  \begin{split}
+%
+   \mathbf{A} \psi &= \chi \\
+%
+  \mat{cccc}{
+  a_{11} &   0    &   0    & 0 \\
+  a_{21} & a_{22} &   0    & 0 \\
+  a_{31} & a_{32} & a_{33} & 0 \\
+  a_{41} & a_{42} & a_{43} & a_{44} }
+%
+  \mat{c}{ \psi_{1} \\ \psi_{2} \\ \psi_{3} \\ \psi_{4} } &= 
+%
+  \mat{c}{ \chi_{1} \\ \chi_{2} \\ \chi_{3} \\ \chi_{4} }.
+%
+  \end{split}
+  \label{eq:linear system}
+\end{equation}
+The system can be solved directly by forward substitution\cite[p. 145]{Meyer2000}. For example
+\begin{equation}
+  \begin{split}
+    \psi_{1} &= \chi_{1} / a_{11} \\
+    \psi_{2} &= \frac{1}{a_{22}} \paren{\chi_{2} - a_{21}\psi_{1}} \\
+    \psi_{3} &= \frac{1}{a_{33}} \paren{\chi_{3} - a_{31}\psi_{1} - a_{32}\psi_{2}} \\
+    \psi_{4} &= \frac{1}{a_{44}} \paren{\chi_{4} - a_{41}\psi_{1} - a_{42}\psi_{2} - a_{43}\psi_{3} }
+  \end{split}
+\end{equation}
+
+%%%%%%%%%%%%%%
+\subsubsection{Integrals}
+Each measurement at the detector combines information about several radial zones. In order to separate the information about the each zone we need to know the size of the each sector in the zone. As we restrict the analysis to two dimensions, this means we need to know the area of sector.
+
+The sector areas are found using iterated integrals. The foundation integral is
+\begin{equation*}
+  \int \sqrt{ r^{2} - y^{2} } dy
+\end{equation*}
+where $r$ represents the size of the circles bounding the annular zone. The integral is of the basic form
+\begin{equation*}
+  \int \sqrt{ 1 - u^{2} } du
+\end{equation*}
+where $u=\tan \theta$ and $du=\tan \theta \sec \theta$. This leads to the primitive (antiderivative)
+%
+\begin{equation}
+  F(r, y) = \int \sqrt{ r^{2} - y^{2} } dy 
+          = \frac{1}{2} \paren{ y \sqrt{ r^{2} - y^{2} } + r^{2} \arctan \paren{ \sqrt{ r^{2} - y^{2} }, y }}
+\end{equation}
+%
+The arctangent function here places the angle in the proper quadrant:
+%
+\begin{equation}
+  -\pi \le \atan {x,y} \le \pi \qquad -\infty < x, y < \infty.
+\end{equation}
+%
+This function also avoids division by zero:
+%
+\begin{equation}
+  \atan {0,\pm \abs{y}} = \pm \frac{\pi}{2} \qquad 0 < y < \infty.
+  \label{eq:singular}
+\end{equation}
+
+This primitive has a convenient scaling property. When the axes scale by a parameter $\lambda \in \real{}$ the function scales by $\lambda^{2}$:
+\begin{equation}
+  F(\lambda r, \lambda y) = \lambda^{2} F(r, y).
+\end{equation}
+This allows us to work with integers which index the zones and sectors. For example
+\begin{equation}
+  F(\Delta r, \Delta y) = \paren{ \frac{1}{n} }^{2} F(r, y).
+\end{equation}
+where $r,\, y \in 0, 1, 2, \dots$. 
+
+The simplest integral is type I. In this case the bottom cut is at $b = 0$ and the left hand constraint is $x(y) = 0$.
+\begin{equation}
+  F_{I} (t, r_{o}) = \int_{0}^{t} \int_{0}^{\sqrt{r_{o}^{2} - t^{2}}} dx\,dy = \frac{1}{2} \paren{ t\sqrt{r_{o}^{2} - t^{2}} + r_{o}^{2} \atan{\sqrt{r_{o}^{2} - t^{2}}, t} }
+\end{equation}
+This special case occurs in only one place, the very core of the capsule where $t=1$ and $r_{o} = 1$. The solution reduces to
+\begin{equation}
+  F_{I} (1, 1) = \frac{\pi}{4}.
+\end{equation}
+This result says that the area $a$ of the smallest zone in the quarter capsule is 
+\begin{equation}
+  a = \frac{\pi}{4} \Delta^{2} = \frac{\pi}{4n^{2}}.
+\end{equation}
+
+%%%%%%%%%%%%%%
+\subsubsection{Areas}
+%
+\begin{equation}
+  \int_{y}^{y+\Delta} \int_{x_{i}(y)}^{x_{o}(y)} dx dy
+\end{equation}
+%
+\begin{equation}
+  \begin{split}
+    x_{i} &= \sqrt{ (k\Delta)^{2} - y^{2}}, \\
+    x_{o} &= \sqrt{ ((k+1)\Delta)^{2} - y^{2}}.
+  \end{split}
+\end{equation}
+%
+The basic integral at the foundation of these areas is this
+%
+\begin{equation}
+  \int \sqrt{ r^{2} - y^{2} }\, dy = \half \paren{ y \sqrt{ r^{2} - y^{2} } - \Delta^{2}\, \atan{\sqrt{ r^{2} - y^{2} }, y}}
+\end{equation}
+%
+%  figure placement: here, top, bottom, or page
+\begin{figure}[htbp] 
+   \centering
+   \includegraphics[ width = 3in ]{graphics/rte/"integral types"} 
+   \caption[Area elements are computed using three types of integrals]{Area elements are computed using three types of integrals. Most of the zones are computed are type I (white) and the area is computed using equation \eqref{eq:area integral I}. Type II zones (light gray) are described using equation \eqref{eq:area integral II}. The last zone, type III (dark gray), corresponds to equation \eqref{eq:area integral III}.}
+   \label{fig:integral types}
+\end{figure}
+
+All the zones are bounded above and below by horizontal cuts $t$ (top) and $b$ (bottom); the right and left bounds are the inner $(r_{i})$ and outer $(r_{o})$ radii of an annulus. The bounds are ordered:
+%
+\begin{equation}
+  \begin{split}
+    0 \le b &< t \le 1, \\
+    0 \le r_{i} &< r_{o} \le 1.
+  \end{split}
+\end{equation}
+%
+The inner and outer radii are
+\begin{equation}
+  \begin{split}
+    r_{i} &= k \Delta, \\
+    r_{o} &= ( k + 1 ) \Delta.
+  \end{split}
+\end{equation}
+%
+Here $k=1,2,\dots,n$.
+%
+The functional forms for the right and left sides are
+\begin{equation}
+  \begin{split}
+    x_{i}(y) &= \sqrt{ r_{i}^{2} - y^{2} }, \\
+    x_{o}(y) &= \sqrt{ r_{o}^{2} - y^{2} },
+  \end{split}
+\end{equation}
+A set of integrals is needed to compute the zone areas. There are three basic types.
+
+Referring back to figure \eqref{fig:integral types}, the most common zone is type I, shown in white. The domain restrictions are
+%
+\begin{equation}
+  \begin{split}
+    r_{i} &= \Delta, 2\Delta, \dots, n \Delta, \qquad r_{o} = r_{i} + \Delta, \\
+    b &= 0, \Delta, 2\Delta, \dots, n \Delta, \qquad t = b + \Delta  .
+  \end{split}
+\end{equation}
+%
+The lamina area is
+%
+\begin{equation}
+  \begin{split}
+    2a_{\mathrm{I}}=2 \int_{b}^{t} \int_{x_{i}(y)}^{x_{o}(y)} dx \, dy
+      &= b \paren{ \sqrt{r_{i}^{2} - b^{2}} - \sqrt{r_{o}^{2} - b^{2}} } \\
+      &+ t \paren{ \sqrt{r_{o}^{2} - t^{2}} - \sqrt{r_{i}^{2} - t^{2}} } \\
+      &+ r_{o}^{2} \paren{ \atan{ \sqrt{r_{o}^{2} - t^{2}}, t }
+                         - \atan{ \sqrt{r_{o}^{2} - b^{2}}, b } } \\
+      &+ r_{i}^{2} \paren{ \atan{ \sqrt{r_{i}^{2} - b^{2}}, b }
+                         - \atan{ \sqrt{r_{i}^{2} - t^{2}}, t } }.
+  \end{split}
+  \label{eq:area integral I}
+\end{equation}
+%
+Next we address the type II zones shown in gray. The domain restrictions are
+%
+\begin{equation}
+  \begin{split}
+    b &= \Delta, 2\Delta, \dots, n \Delta, \qquad t = b + \Delta, \\
+    r_{o} &= b+\Delta, \qquad x_{i}(y) = 0  .
+  \end{split}
+\end{equation}
+%
+The lamina area is then
+%
+\begin{equation}
+  \begin{split}
+    2a_{\mathrm{II}}=2 \int_{b}^{t} \int_{0}^{x_{o}(y)} dx \, dy
+      &= t \sqrt{r_{o}^{2} - t^{2}} - b \sqrt{r_{o}^{2} - b^{2}} \\
+      &+ r_{o}^{2} \paren{ \atan{ \sqrt{r_{o}^{2} - t^{2}}, t }
+                         - \atan{ \sqrt{r_{o}^{2} - b^{2}}, b } }. \\
+  \end{split}
+  \label{eq:area integral II}
+\end{equation}
+%
+The type III integral describes the lone black zone. The domain restrictions are
+%
+\begin{equation}
+  \begin{split}
+    r_{0} = \Delta, \\
+    t = \Delta .
+  \end{split}
+\end{equation}
+%
+The lamina area is now
+%
+\begin{equation}
+  \begin{split}
+    2a_{\mathrm{III}}=2 \int_{0}^{t} \int_{0}^{x_{o}(y)} dx \, dy
+      &= t \sqrt{r_{o}^{2} - t^{2}} + r_{o}^{2} \, \atan{ \sqrt{r_{o}^{2} - t^{2}}, t }.
+  \end{split}
+  \label{eq:area integral III}
+\end{equation}
+%
+The domain restrictions on integral \eqref{eq:area integral III} can be expressed using the spatial extent only
+%
+\begin{equation}
+  \begin{split}
+    a_{\mathrm{III}}= \half \int_{0}^{\Delta} \int_{0}^{\sqrt{\Delta^{2} - y^{2}}} dx \, dy
+      = \frac{1}{4} \pi \Delta^{2}
+  \end{split}
+  \label{eq:area integral III}
+\end{equation}
+a reassuring result using equation \eqref{eq:singular}.
+%
+
+%%%%%%%%%%%%%%
+\subsubsection{Sample integral}
+%
+The top and bottom horizontal cuts are
+$$b = 2\Delta, \quad t = 3\Delta$$
+The annulus has inner and outer radii
+$$r_{i} = 5\Delta, r_{o} = 6\Delta$$
+%
+The vertical boundaries are
+%
+\begin{equation}
+  \begin{split}
+    x_{i}(y) &= \sqrt{ (5\Delta)^{2} - y^{2}}, \\
+    x_{0}(y) &= \sqrt{ (6\Delta)^{2} - y^{2}}.
+  \end{split}
+\end{equation}
+%
+The domain is expressed as
+%
+\begin{equation}
+  \Omega_{64} = \lst{(x,y)\colon \sqrt{ (5\Delta)^{2} - y^{2}} \le x \le \sqrt{ (6\Delta)^{2} - y^{2}}, 2\Delta \le y \le 3\Delta}
+\end{equation}
+%
+and is shown in figure \eqref{eq:area example}.
+%  figure placement: here, top, bottom, or page
+\begin{figure}[htbp] 
+   \centering
+   \includegraphics[ width = 4in ]{graphics/rte/"zone area"} 
+   \caption[Sample area element]{Sample area element $a_{64}$. This is a type I integral with horizontal boundaries are $t = 3\Delta$ and $b = 2\Delta$. The sides of the element have inner and outer radii given by $r_{i} = 5\Delta$ and $r_{o} = 6\Delta$. The calculation is shown in equation \eqref{eq:area example}.}
+   \label{fig:tooth}
+\end{figure}
+%
+\begin{equation}
+  \begin{split}
+    a_{64}
+      &= \iint_{\Omega_{64}}dx\,dy
+       = \int_{b}^{t} \int_{x_{i}(y)}^{x_{o}(y)} dx\,dy
+       = \int_{2\Delta}^{3\Delta} \int_{\sqrt{ (5\Delta)^{2} - y^{2}}}^{\sqrt{ (6\Delta)^{2} - y^{2}}} dx\,dy \\
+      &= \Delta^{2} \paren{2 \paren{\sqrt{21} - 4\sqrt{2}} + 3 \paren{3\sqrt{3} - 4}} \\
+      &+ 36\Delta^{2} \paren{ \arctan \paren{\frac{1}{\sqrt{3}}} - \arctan \paren{\frac{1}{2\sqrt{2}}} } \\
+      &+ 25\Delta^{2} \paren{ \arctan \paren{\frac{2}{\sqrt{21}}} - \arctan \paren{\frac{3}{4}} } \\
+      &\approx 0.0176228
+      \label{eq:area example}
+  \end{split}
+\end{equation}
+
+%%%%%%%%%%%%%%
+\subsubsection{Existence and uniqueness}
+
+\input{chapters/"ch measurement"/"prf least area"}                % P R O O F
+\input{chapters/"ch measurement"/"prf area ordering"}             % P R O O F
+\input{chapters/"ch measurement"/"prf existence and uniqueness"}  % P R O O F
+
+
+%%%%%%%%%%%
+\subsection{General system}
+Extend the methodology to an arbitrary number of detectors.
+
+%  figure placement: here, top, bottom, or page
+\begin{figure}[htbp] 
+   \centering
+   \includegraphics[ width = 3in ]{graphics/rte/"A 25"} 
+   \caption{example caption}
+   \label{fig:example}
+\end{figure}
+
+
+\endinput %-------------------------------

@@ -1,0 +1,150 @@
+\subsection{\label{variable coefficients}Variable coefficients}
+
+Begin by treating the parameters $\alpha$ and $j$ as constants. This may seem unrelated to our problem, but when we study trajectories we will consider travel along isoclines where one of these parameters is constant.
+
+\begin{equation}
+  \td{I(s)}{s} = -\alpha(s) I(s)
+\end{equation}
+which we may integrate directly to produce
+\begin{equation}
+  I(s) = e^{\int_{s_{0}}^{s}-\alpha(\tau) d\tau}
+\end{equation}
+for problems where the intensity at the origin is known.
+
+
+\begin{equation}
+  \td{I(s)}{s} = -\alpha(s) I(s) + j(s)
+\end{equation}
+which we may integrate directly to produce
+\begin{equation}
+  I(s) = e^{\int_{s_{0}}^{s}-\alpha(\tau) d\tau} \paren{C + \int_{s_{0}}^{s} e^{\int_{s_{0}}^{s}\alpha(\tau) d\tau}j(\sigma) d\sigma}
+\end{equation}
+
+Consider a few examples with a capsule with two zones, each characterized by differing values for the absorption $\alpha(r)$ and the emission $j(r)$. The inner zone is defined as $0\le r < r_{0}$ with solution $I_{\nu}^{inner}(r)$ and the outer zone as $r_{0}\le r \le 1$ with solution $I_{\nu}^{outer}(r)$. The boundary condition is
+  % % % EQUATION
+  \begin{equation}
+    I_{\nu}^{inner}(r_{0}) = I_{\nu}^{outer}(r_{0})
+  \end{equation}
+  % %
+For these examples $r_{0} = \half$.
+%%%%%%%%%%%%%%
+\subsubsection{Example I}
+Absorption
+Emission
+\begin{table}[htdp]
+\caption[Input functions for example I]{Input functions for example I}
+\begin{center}
+\begin{tabular}{cccc}
+%
+ && inner & outer \\
+ && $0\le r < r_{0}$ & $r_{0}\le r \le 1$ \\\hline
+% 
+  $\alpha(r)$ & $=$ & $1+r$ & $1-r+r^{2}$ \\
+% 
+  $j(r)$ & $=$ & $r$ & $r^{2}$
+%
+\end{tabular}
+\end{center}
+\label{tab:fcns:I}
+\end{table}
+%
+Specific intensity in the inner zone
+  % % % EQUATION
+  \begin{equation}
+    I_{\nu}^{inner}(r) = \sqrt{\frac{\pi }{2}} e^{-\half (r+1)^2} \paren{\erfi\left(\frac{3}{2 \sqrt{2}}\right)-\erfi\left(\frac{r+1}{\sqrt{2}}\right)}+1
+  \end{equation}
+  % %
+Here the imaginary error function\index{error function!imaginary} is defined as
+   % % % EQUATION
+  \begin{equation}
+    \erfi (z) = -i \,\erf (iz) ,
+  \end{equation}
+  % %
+with the error function\index{error function} given as
+  % % % EQUATION
+  \begin{equation}
+    \erf (z) = \frac{2}{\sqrt{\pi}} \int_{0}^{z} e^{-t^{2}} dt
+  \end{equation}
+  % %
+where $z\ic$
+Specific intensity in the outer zone
+  % % % EQUATION
+  \begin{equation}
+    I_{\nu}(r)^{outer} = e^{-\frac{1}{6} r (r (2 r-3)+6)} \left(\int_{r_{0}}^r e^{\frac{1}{6} t (t (2 t-3)+6)} t^2 \, dt+e^{5/12}\right)
+  \end{equation}
+  % %
+% <<<<<
+\input{chapters/"ch rte"/"tab example I plots"}
+% <<<<<
+
+%%%%%%%%%%%%%%
+\subsubsection{Example II}
+Non-polynomial structure in the source term
+\begin{table}[htdp]
+\caption[Input functions for example II]{Input functions for example II}
+\begin{center}
+\begin{tabular}{cccc}
+%
+ && inner & outer \\
+ && $0\le r < r_{0}$ & $r_{0}\le r \le 1$ \\\hline
+% 
+  $\alpha(r)$ & $=$ & $1+r$ & $1-r+r^{2}$ \\
+% 
+  $j(r)$ & $=$ & $e^{-r}$ & $\sin(5\pi r)$
+%
+\end{tabular}
+\end{center}
+\label{tab:fcns:II}
+\end{table}%
+
+Specific intensity
+  % % % EQUATION
+  \begin{equation}
+    I_{\nu}^{inner}(r) = e^{-\half r (r+2)} \paren{\frac{\sqrt{2 \pi }}{2} \left(\erfi \paren{\frac{r}{\sqrt{2}}} - \erfi \paren{\frac{1}{2 \sqrt{2}}\right)} + e^{\frac{5}{8}}}
+  \end{equation}
+  % %
+  % % % EQUATION
+  \begin{equation}
+    I_{\nu}^{outer}(r) = e^{-\frac{1}{6} r (r (2 r-3)+6)} \paren{\int_{r_{0}}^{r} e^{\frac{1}{6} t (t (2 t-3)+6)} \sin (5 \pi  t) \, dt+e^{5/12}}
+  \end{equation}
+  % %
+% <<<<<
+\input{chapters/"ch rte"/"tab example II plots"}
+% <<<<<
+
+%%%%%%%%%%%%%%
+\subsubsection{Example III}
+Non-polynomial structure in the source term
+\begin{table}[htdp]
+\caption[Input functions for example III]{Input functions for example III}
+\begin{center}
+\begin{tabular}{cccc}
+%
+ && inner & outer \\
+ && $0\le r < r_{0}$ & $r_{0}\le r \le 1$ \\\hline
+% 
+  $\alpha(r)$ & $=$ & $R_{6}^{0}(r)$ & $R_{2}^{0}(r)$ \\
+% 
+  $j(r)$ & $=$ & $R_{6}^{0}(r)$ & $R_{4}^{0}(r)$
+%
+\end{tabular}
+\end{center}
+\label{tab:fcns:III}
+\end{table}%
+
+Specific intensity
+  % % % EQUATION
+  \begin{equation}
+    I_{\nu}^{inner}(r) = e^{-\frac{20 r^7}{7}+6 r^5-4 r^3+r-\frac{3193}{15309}} \left(e^{3193/15309} \left(\int_{r_{0}}^{r} e^{\frac{20 t^7}{7}-6 t^5+4 t^3-t} \left(2 t^2-1\right) \, dt\right)+1\right)
+  \end{equation}
+  % %
+  % % % EQUATION
+  \begin{equation}
+    I_{\nu}^{outer}(r) = e^{-\frac{2 r^3}{3}+r-\frac{25}{81}} \left(e^{25/81} \left(\int_{r_{0}}^{r} e^{\frac{2 t^3}{3}-t} \left(6 t^4-6 t^2+1\right) \, dt\right)+1\right)
+  \end{equation}
+  % %
+% <<<<<
+\input{chapters/"ch rte"/"tab example III plots"}
+% <<<<<
+
+\endinput %-------------------------------

@@ -1,0 +1,134 @@
+\section{\label{sec:geometry}Geometry}
+
+Photons travel from an origination point along a random direction. In the computer code, the photons travel to 
+%
+\begin{enumerate}
+\item zone transition (internal or external)
+\item absorption point
+\item scattering point
+\item exit point
+\end{enumerate}
+
+%%%%%%%%%%%
+\subsection{Important theorems}
+Much of the analysis here relies upon a few critical theorems which are stated with brief proofs bellow.
+%%%
+\begin{myTheorem}(Norms for inner-product spaces)\\
+If $\mathcal{V}$ is an inner-product space with inner product $\inner{x}{y}$ then
+\begin{equation}
+  \norm{\cdot} = \sqrt{\inner{\cdot}{\cdot}}
+\end{equation}
+defines a norm on $\mathcal{V}$.
+\end{myTheorem}
+%%%%%%
+\begin{proof}
+The properties which define a norm are listed here.
+\begin{enumerate}
+%
+\item $\norm{A}\ge 0$, with $\norm{A}\iff A=0$
+%
+\item $\norm{\alpha A} = \abs{\alpha}\norm{A}$, $\alpha\in\cmplx{}$
+%
+\item $\norm{A + B} \le \norm{A} + \norm{B}$
+%
+\item $\norm{A B} \le \norm{A} \norm{B}$
+%
+\end{enumerate}
+\end{proof}
+%%%%%%
+%%%
+\begin{myTheorem}(Cauchy-Bunyakovsky-Schwarz inequality)\\
+If $\mathcal{V}$ is an inner-product space with norm $\norm{\cdot} = \sqrt{\inner{\cdot}{\cdot}}$ then
+\begin{equation}
+  \abs{ \inner{x}{y} } \le \norm{x} \norm{y} \qquad \forall x,y \in \mathcal{V}.
+\end{equation}
+The equality is achieved iff $\displaystyle{y = \frac{\inner{x}{y}}{\norm{x}}} \hat{x}$ where the unit vector $\hat{x} = \frac{x}{\norm{x}}$.
+\end{myTheorem}
+%%%%%%
+\begin{proof}
+2+2=4
+\end{proof}
+%%%%%%
+%%%
+\begin{myTheorem}(Angle between subspaces)\\
+Given a real inner product space $\mathcal{V}$ and two vectors in that space $p,q\in\mathcal{V}$. Then the angle $\theta$ between these vectors is defined by
+\begin{equation}
+  \cos \theta = \frac{p \cdot q}{\norm{p}\norm{q}}
+\end{equation}
+where $0\le \theta \le \pi$.
+\end{myTheorem}
+%%%%%%
+\begin{proof}
+2+2=4
+\end{proof}
+%%%%%%
+
+%%%%%%%%%%%
+\subsection{Photon moves}
+Start at a position $p$ and travel along the vector $q$ by an amount $\alpha$. The norm is quadratic in the parameter $\alpha$:
+%%
+\begin{equation}
+  \normts{p + \alpha q} = \alpha^{2} (q\cdot q) + 2 \alpha (p\cdot q) + p\cdot p
+\end{equation}
+%%
+For the cases where $q = \hat{u}$, 
+%%
+\begin{equation}
+  \normts{p + \alpha \hat{u}} = \alpha^{2} + 2 \alpha (p\cdot \hat{u}) + p\cdot p
+\end{equation}
+%%
+
+Finding zone crossings
+%
+\begin{equation}
+  \alpha^{2} + 2 \alpha (p\cdot \hat{u}) + p\cdot p = r
+  \label{eq:quadratic}
+\end{equation}
+%
+Equation \eqref{eq:quadratic} is quadratic in the parameter $\alpha$.
+
+The discriminant\index{discriminant} is, after omitting a factor of 4,
+%
+\begin{equation}
+  D = (p\cdot \hat{u})^{2} - (p^{2} - r^{2}).
+\end{equation}
+%
+The signature of the discriminant reveals whether the equation has two distinct roots, a repeated root or no root on $\real{}$:
+%
+\begin{enumerate}
+\item $D = 0$: degenerate case
+\item $D < 0$: no real root
+\item $D > 0$: distinct roots
+\end{enumerate}
+%
+Due to finite binary representation, computations have numeric errors. Define machine $\eps$\index{machine \eps} as the smallest number for which
+%
+\begin{equation}
+  1 + \eps > 1
+\end{equation}
+%
+Computations were run on a 64-bit Intel Xeon processor where the \emph{Mathematica} command \verb=$MachineEpsilon=, the MATLAB command \verb=eps=, and the Fortran 2008 command \verb=EPSILON()= produce the same number: $2.2204 \times 10^{16}$.
+%
+\begin{enumerate}
+\item $D \le \eps$: degenerate case
+\item $D < -\eps$: no real root
+\item $D > \eps$: distinct roots
+\end{enumerate}
+%
+If $D=0$ the repeated root is
+\begin{equation}
+  \alpha = -p \cdot \hat{u};
+\end{equation}
+if $D>0$ the distinct roots are
+% % % EQUATION
+\begin{equation}
+  \alpha_{\pm} = p \cdot \hat{u} \pm \sqrt{D}.
+\end{equation}
+%
+
+% <<<<<
+%\input{chapters/"ch rte"/"sub sec constant coefficients"}
+%\input{chapters/"ch rte"/"sub sec variable coefficients"}
+% <<<<<
+
+\endinput %-------------------------------

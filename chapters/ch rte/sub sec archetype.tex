@@ -1,0 +1,41 @@
+\subsection{\label{subsec:Archetype}Archetype}
+
+The archetype ordinary differential equation is
+\begin{equation}
+  \td{I(s)}{s} + I(s) = 1
+  \label{eq:archetype}
+\end{equation}
+
+\begin{table}[htdp]
+\caption[Solutions for the archetype equation]{Solutions for the archetype equation \eqref{eq:archetype} using Dirichlet and Neumann boundary conditions.}
+\begin{center}
+\begin{tabular}{c}
+%
+ $I(s) = 1 - e^{-s}$ \\
+%
+ BC: $y(0) = 0$ or $y'(1) = 1$ \\
+%
+\includegraphics[ width = 3in ]{graphics/rte/"archetype II"} \\\hline
+%
+ \\
+%
+ $I(s) = 1 - e^{1-s}$ \\
+%
+ BC: $y(1) = 0$ or $y'(0) = 1$ \\
+%
+\includegraphics[ width = 3in ]{graphics/rte/"archetype I"} \\\hline
+%
+ \\
+%
+ $I(s) = 1$ \\
+%
+ Neumann BC: $y'(0) = 0$ or $y'(1) = 0$ \\
+%
+\includegraphics[ width = 3in ]{graphics/rte/"archetype III"}
+%
+\end{tabular}
+\end{center}
+\label{tab:ode:archetype}
+\end{table}%
+
+\endinput %-------------------------------

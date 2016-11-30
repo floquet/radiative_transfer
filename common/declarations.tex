@@ -1,0 +1,70 @@
+\usepackage{amsthm}
+\newtheorem{myDefinition}{Definition}
+\newtheorem{myTheorem}{Theorem}
+\newtheorem{myLemma}{Lemma}
+
+% other definitions
+\input{\fullpath/delimiters}
+\input{\fullpath/derivatives}
+\input{\fullpath/norms}
+\input{\pathname/spaces}
+\input{\pathname/"macro Zernike"}
+
+% stray commands  --   --   --   --   --   --   --   --   --   --   --   --
+
+% scattering integral
+\newcommand{\csd}[0]     {\mu_{s}(r,\omega \cdot \hat{\omega})}
+\newcommand{\scat}[0]    {\frac{1}{4\pi} \int_{4\pi} \csd I_{\nu}(s,\omega) d\hat{\omega}}
+% functions
+\newcommand{\fln}[1]     { \text{ln}(#1) }
+\newcommand{\atan}[1]    { \text{arctan}\paren{#1} }
+\newcommand{\erf}        {\text{erf}}
+\newcommand{\erfi}       {\text{erfi}}
+
+% abbreviations
+\newcommand{\ftli}[0]    {Fundamental Theorem of Line Integrals}
+\newcommand{\rte}[0]     {radiative transport equation}
+\newcommand{\xr}[0]      {$x-$rays}
+\newcommand{\gr}[0]      {$\gamma-$rays}
+
+% bound angle
+\newcommand{\bangle}[1]  { 0 \le #1 < 2\pi }
+
+% fractions
+\newcommand{\half}[0]    { \frac{1}{2} }
+\newcommand{\quarter}[0] { \frac{1}{4} }
+\newcommand{\third}[0]   { \frac{1}{2} }
+\newcommand{\pih}[0]     { \frac{\pi}{2} }
+
+% order
+\newcommand{\order}[1]   { \mathcal{o}\paren{#1} }
+\newcommand{\Order}[1]   { \mathcal{O}\paren{#1} }
+
+\newcommand{\mx}[2]      { \max\limits_{#1 \in \cmplx{ #2 }} }
+\newcommand{\mn}[2]      { \min\limits_{#1 \in \cmplx{ #2 }} }
+
+\newcommand{\mxxn}[0]    { \mx{x}{n} }
+\newcommand{\mnxn}[0]    { \mn{x}{n} }
+
+\newcommand{\mxball}[0]  { \max\limits_{\normt{x} = 1} }
+
+%
+\newcommand{\mat}[2]     {\left[\begin{array} {#1}#2 \end{array}\right]}
+
+% is equal?
+\newcommand{\iseq}[0]    { \overset{?}{=} }
+
+% spacings and such
+\newcommand{\wfour}[0]   {1.05in}
+
+% epsilon 
+\newcommand{\eps}[0]     {\epsilon}
+\newcommand{\egtz}[0]    {\eps > 0}
+
+\newcommand{\vel}[0]     {\mathbf{v}}
+
+% ions
+\newcommand{\deu}[0]     {\!\,^{2}\mathrm{H}_{1}}
+\newcommand{\tri}[0]     {\!\,^{3}\mathrm{H}_{1}}
+
+\endinput

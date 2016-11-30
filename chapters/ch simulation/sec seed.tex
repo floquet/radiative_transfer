@@ -1,0 +1,50 @@
+\section{\label{sec:seeding}Seeding}
+
+Begin with the capsule divided in $m$ zones. For example the outer radii may be given by
+\begin{equation}
+  r_{o} = \lst{\frac{1}{3},\half,1}
+  \label{eq:radii}
+\end{equation}
+for $m=3$. The origin locations for the $n$ seed photons are given by a list of variables $p_{k}\in\real{2}$, $k=1,2,3\dots$ and the initial directions are the set of unit vectors $u_{k}\in\real{2}$.
+%  figure placement: here, top, bottom, or page
+\begin{figure}[bthp] 
+   \centering
+   \includegraphics[ width = 3in ]{graphics/"monte carlo"/"origins Cartesian 00010000"} 
+   \caption[Sample capsule with seed photons]{Sample capsule showing locations for 10K seed photons. The average (marked with red ``+'') and standard deviation (shown as red ellipse) for this data set is given in \eqref{eq:p:average}. The dark bands mark the three zones given in \eqref{eq:radii}.}
+   \label{fig:capsule:seed}
+\end{figure}
+%%
+Let $\zeta\in[0,1]$ be a random number distributed uniformly over the unit interval. Then we may generated a seeded sequence of random numbers $\zeta_{1}, \zeta_{2}, \dots$. The initial position vectors are created using the recipe
+%%
+\begin{equation}
+  p_{j} = \mat{c}{\zeta_{k} \\ \zeta_{k+1}}, \qquad j=1,2,\dots,m
+\end{equation}
+%%
+with an acceptance criterium that $\normt{p}\le1$. The initial directions are then generated from random numbers deeper into the sequence.
+Let $\hat{u}_{k}=\lst{\hat{u}_{1},\hat{u}_{2},\dots}\in[0,1]$ be a sequence of random numbers unit vectors distributed uniformly over the circle.
+%%
+\begin{equation}
+  \theta_{k} = 2 \pi \zeta_{k}
+\end{equation}
+%%
+\begin{equation}
+  \hat{u}_{k} = \mat{c}{\sin \theta_{k} \\ \cos \theta_{k}}
+\end{equation}
+%%
+\begin{equation}
+  \overline{p} = \mat{r}{0.005\\-0.004} \pm \mat{r}{0.25\\0.26}
+  \label{eq:p:average}
+\end{equation}
+%%
+This average and standard deviation provide a quality measure for the random data
+%%
+\begin{equation}
+  \overline{p}_{ideal} = \mat{r}{0\\0} \pm \frac{1}{4} \mat{c}{1\\1}.
+\end{equation}
+
+% <<<<<
+%\input{chapters/"ch rte"/"sub sec constant coefficients"}
+%\input{chapters/"ch rte"/"sub sec variable coefficients"}
+% <<<<<
+
+\endinput %-------------------------------

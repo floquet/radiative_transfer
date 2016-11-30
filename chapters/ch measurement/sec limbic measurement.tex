@@ -1,0 +1,117 @@
+\section{\label{sec:measurement:limbs}Limbic measurements}
+The challenge is to interpret these measurements and provide some description of the scalar field being sampled.
+
+%%%%%%%%%%%
+\subsection{Detector geometry}
+\begin{table}[htdp]
+\caption[Areas of the region in the capsule sampled by the detectors]{Areas of the region in the capsule sampled by the detectors.}
+\begin{center}
+\begin{tabular}{ccccc}
+%
+ \raisebox{-0.5\height}{\includegraphics[ width = 1.5in ]{graphics/rte/"segments pie"}} &$-$&
+ \raisebox{-0.5\height}{\includegraphics[ width = 1.5in ]{graphics/rte/"segments triangle"}} &$=$&
+ \raisebox{-0.5\height}{\includegraphics[ width = 1.5in ]{graphics/rte/"segments limb"}} \\
+%
+ $\frac{1}{2} \arccos(y)$ & $-$ & $\frac{1}{2}y\sqrt{1-y^{2}}$ & $=$ & $\frac{1}{2}\paren{ \arccos(y) - y\sqrt{1-y^{2}} }$ 
+%
+\end{tabular}
+\end{center}
+\label{tab:measurement:basic area}
+\end{table}%
+
+
+\begin{figure}[htbp] %  figure placement: here, top, bottom, or page
+   \centering
+   \includegraphics[ width = 5.5in ]{\tildepath\bandpath/layout}
+   \caption[Detectors record limbic samples]{The detectors record limbic samples.}
+   \label{fig:detectors}
+\end{figure}
+
+%%%%0%%%%%%%%
+\begin{table}[htdp]
+\caption[X-ray detector geometry]{X-ray detector geometry. Note $A_{0}\doteq0$.}
+\begin{center}
+\begin{tabular}{cccccc}
+%
+ & $A_{k}$ &$=$ & $\int_{0}^{\sqrt{1 - x_{k}^{2}}} \int_{y_{k}}^{\sqrt{1 - x^{2}}} f(x,y) dy dx$ &$-$& $A_{k-1}$ \\[20pt]
+%
+ $k = 1$ &
+ \raisebox{-0.45\height}{\includegraphics[ width = 1in ]{\tildepath\bandpath/"bands 01"}} & = &
+ \raisebox{-0.45\height}{\includegraphics[ width = 1in ]{\tildepath\bandpath/"bases 01"}} & $-$ & \qquad 
+ \raisebox{-0.45\height}{\includegraphics[ width = 1in ]{\tildepath\bandpath/"bands 00"}} \\[50pt]
+%
+ $k = 2$ &
+ \raisebox{-0.45\height}{\includegraphics[ width = 1in ]{\tildepath\bandpath/"bands 02"}} & = &
+ \raisebox{-0.45\height}{\includegraphics[ width = 1in ]{\tildepath\bandpath/"bases 02"}} & $-$ & \qquad 
+ \raisebox{-0.45\height}{\includegraphics[ width = 1in ]{\tildepath\bandpath/"bands 01"}} \\[50pt]
+%
+ $k = 3$ &
+ \raisebox{-0.45\height}{\includegraphics[ width = 1in ]{\tildepath\bandpath/"bands 03"}} & = &
+ \raisebox{-0.45\height}{\includegraphics[ width = 1in ]{\tildepath\bandpath/"bases 03"}} & $-$ & \qquad 
+ \raisebox{-0.45\height}{\includegraphics[ width = 1in ]{\tildepath\bandpath/"bases 02"}} \\[50pt]
+%
+ $k = 4$ &
+ \raisebox{-0.45\height}{\includegraphics[ width = 1in ]{\tildepath\bandpath/"bands 04"}} & = &
+ \raisebox{-0.45\height}{\includegraphics[ width = 1in ]{\tildepath\bandpath/"bases 04"}} & $-$ & \qquad 
+ \raisebox{-0.45\height}{\includegraphics[ width = 1in ]{\tildepath\bandpath/"bases 02"}} \\[50pt]
+%
+ $k = 5$ &
+ \raisebox{-0.45\height}{\includegraphics[ width = 1in ]{\tildepath\bandpath/"bands 05"}} & = &
+ \raisebox{-0.45\height}{\includegraphics[ width = 1in ]{\tildepath\bandpath/"bases 05"}} & $-$ & \qquad 
+ \raisebox{-0.45\height}{\includegraphics[ width = 1in ]{\tildepath\bandpath/"bases 04"}} 
+%
+\end{tabular}
+\end{center}
+\label{tab:detector geometry}
+\end{table}
+%
+\clearpage
+
+%%%%%%%%%%%
+\subsection{Zones and sectors}
+Zones are annular regions; sectors are horizontal partitions in the zones. The annulus is defined by inner and outer radii $\paren{ r_{i}, r_{o} }$. The sectors are defined by horizontal cuts at the top and bottom $\paren{ b, t }$. The quantities are ordered and because the capsule is mapped to the unit disk we may write
+\begin{equation}
+  \begin{split}
+    0 \le b &< t \le 1, \\
+    0 \le r_{i} &< r_{o} \le 1.
+  \end{split}
+\end{equation}
+
+Let $n$ represent the number of detectors mapped to a quadrant of the capsule. The detectors are considered to have continuous coverage and there are no gaps between the detectors. This implies that each detector has a spatial extent\index{spatial extent} $\Delta$ given as
+\begin{equation}
+  \Delta = \frac{1}{n}, \qquad n \in 1,2,3\dots
+  \label{eq:defn:delta}
+\end{equation}
+This is a convenient parameter to use when discussing partitions of the capsule interior.
+
+The largest segment is shown in table \eqref{tab:measurement:basic area}. Using the assignments
+\begin{equation}
+  \begin{split}
+    y &= 1 - \Delta, \\
+    x &= \sqrt{1 - \paren{1-\Delta^{2}}} = \sqrt{\Delta (2-\Delta)}
+  \end{split}
+\end{equation}
+\begin{equation}
+  a_{11}(\Delta) = \half \paren{ \arccos (1-\Delta) - (1-\Delta) \sqrt{\Delta (2-\Delta)} }
+\end{equation}
+%
+Observe that when there is only one partition, that is a single limb for the quarter capsule we get the expected answer
+%
+\begin{equation}
+  a_{11}(1) = \frac{\pi}{4}.
+\end{equation}
+%
+This reaffirms that a quarter of the unit disk has area $\pi/4$.
+
+In figure \eqref{fig:tooth} we see an annular zone with inner radius $r_{i} = 5\Delta$ and outer radius $r_{o} = 6\Delta$. The horizontal cuts which are mapped to detector edges has top $t=3\Delta$ and bottom $b=2\Delta$. This domain defines a sector with area $a_{64}$. The index on the array corresponds to an address in a matrix and will be explored later.
+%  figure placement: here, top, bottom, or page
+\begin{figure}[htbp] 
+   \centering
+   \includegraphics[ width = 4in ]{graphics/rte/"zone area"} 
+   \caption[Zones and sectors]{Basic zones and sectors which partition the capsule, the two basic domain types. The detectors correspond to the horizontal cuts and have spatial extent $\Delta$. We will see that these parallel cuts will create annular regions and the ultimate solution will be quantification of the values of a scalar field between $r_{i}$ and $r_{o}$. }
+   \label{fig:tooth}
+\end{figure}
+
+We will see that the sectors can be grouped into three classifications depending upon the complexity of their domains.
+
+\endinput %-------------------------------
